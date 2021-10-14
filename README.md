@@ -1,9 +1,3 @@
-## Pour découvrir :
- - Déploiement
- - Next ts
- - redux-toolkit
- - styled-component / emotion
-
 ## Getting Started
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
@@ -38,3 +32,23 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Pour découvrir :
+- Next ts
+- redux-toolkit
+- styled-component / emotion
+- bases de CI avec github actions
+
+
+- Story 1 : Initier une CI
+    - Une todo list non persisté et tester sur Next avec react-testing-library
+    - Une CI avec:
+        - Un job d'infos
+        - Un job de test
+        - un job de deploy prod depuis la branche master, non prod depuis les autres branches
+
+
+- Story _ : 
+  - Intégrer un linter à la CI
+  - Factoriser les jobs github actions
+  - Une todo list persisté
