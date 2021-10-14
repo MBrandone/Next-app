@@ -1,0 +1,35 @@
+name: GitHub Actions
+on:
+  push:
+    branches:
+      - master
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 Let's go to prod"
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          node-version: '14'
+      - name: Installing typescript
+        run: npm install -g typescript
+      - run: npm --version
+      - run: npm install
+      - run: npm run test
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy with Vercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-cli: vercel
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-args: '--prod'
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
