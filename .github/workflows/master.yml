@@ -8,18 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 Let's go to prod"
+  build:
+    uses: MBrandone/Next-app/.github/workflows/build-next.yml@master
   test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
-        with:
-          node-version: '14'
-      - name: Installing typescript
-        run: npm install -g typescript
-      - run: npm --version
-      - run: npm install
-      - run: npm run test
+    needs: build
+    uses: MBrandone/Next-app/.github/workflows/test-next-app.yml@master
   deploy:
     needs: test
     runs-on: ubuntu-latest
