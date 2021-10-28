@@ -1,0 +1,13 @@
+name: Test Next.js project
+on:
+  workflow_call
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          node-version: '14'
+      - run: npm install
+      - run: npm run test
