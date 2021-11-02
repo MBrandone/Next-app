@@ -22,6 +22,14 @@ const Home = () => {
           <a>Compteur</a>
         </Link>
 
+        <Link href="/todoList">
+          <a>Todo List</a>
+        </Link>
+
+        <Link href="/todoListPersisted">
+          <a>Todo List persistée</a>
+        </Link>
+
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
