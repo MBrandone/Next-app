@@ -8,7 +8,7 @@ import {
     increment,
     incrementByAmount,
     selectCount,
-} from '../features/counter/counterSlice';
+} from '../app/features/counter/counterSlice';
 
 const CounterPage:React.FC = () => {
     const dispatch = useAppDispatch();

@@ -8,3 +8,6 @@ module.exports = {
     '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
   },
 };
+
+const { loadEnvConfig } = require('@next/env')
+loadEnvConfig(process.env.PWD)

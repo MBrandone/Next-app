@@ -23,10 +23,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Deploy with Vercel
-        uses: amondnet/vercel-action@v20
+      - uses: actions/setup-node@v1
         with:
-          vercel-cli: vercel
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          node-version: '14'
+          registry-url: https://registry.npmjs.org/
+      - name: "Deploiement sur Vercel"
+        run: |
+          npx vercel --build-env DATABASE_URL=${DATABASE_URL} --token ${VERCEL_TOKEN}
+        env:
+          DATABASE_URL: ${{ secrets.REVIEW_APP_DATABASE_URL }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      - name: "Mise à jour des schémas de bases de données"
+        run: |
+          npm install && npm run migrate
+        env:
+          DATABASE_URL: ${{ secrets.REVIEW_APP_DATABASE_URL }}
