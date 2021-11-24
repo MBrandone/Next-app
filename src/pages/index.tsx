@@ -26,7 +26,7 @@ const Home = () => {
           <a>Todo List</a>
         </Link>
 
-        <Link href="/todoListPersisted">
+        <Link href="/tasks">
           <a>Todo List persistée</a>
         </Link>
 

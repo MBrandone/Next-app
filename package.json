@@ -10,6 +10,8 @@
     "start:testing-database": "cd backing-services && docker-compose up -d && cd ..",
     "stop:testing-database": "cd backing-services && docker-compose down && cd ..",
     "test": "npm run start:testing-database && dotenv -e .env.test -- prisma migrate deploy && jest && npm run stop:testing-database",
+    "test:e2e": "cypress run --env SERVER_URL=http://localhost:3000,BFF_URL=http://localhost:3000/api",
+    "test:open-e2e": "cypress open --env SERVER_URL=http://localhost:3000,BFF_URL=http://localhost:3000/api",
     "migrate:dev": "prisma db push",
     "migrate": "prisma migrate deploy",
     "open-sgbd": "prisma studio",
@@ -37,13 +39,17 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.0.2",
     "babel-jest": "^27.2.5",
+    "cypress": "^9.1.0",
+    "dotenv": "^10.0.0",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
+    "faker": "^5.5.3",
     "jest": "^27.2.5",
     "prisma": "^3.3.0",
     "react-test-renderer": "^17.0.2",
     "ts-jest": "^27.0.5",
     "ts-node": "^10.3.0",
-    "typescript": "4.4.4"
+    "typescript": "4.4.4",
+    "uuid": "^8.3.2"
   }
 }
