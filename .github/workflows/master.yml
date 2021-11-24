@@ -24,7 +24,9 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: "Déploiement sur Vercel"
         run: |
-          npx vercel --build-env DATABASE_URL=${DATABASE_URL} --token ${VERCEL_TOKEN} --prod
+          npx vercel --build-env DATABASE_URL=${DATABASE_URL} --token ${VERCEL_TOKEN} --prod > deployment.txt
+          export DEPLOYMENT_URL=`cat ./deployment.txt`
+          echo "DEPLOYMENT_URL=$DEPLOYMENT_URL" >> $GITHUB_ENV
         env:
           DATABASE_URL: ${{ secrets.PROD_DATABASE_URL }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -35,3 +37,14 @@ jobs:
           npm install && npm run migrate
         env:
           DATABASE_URL: ${{ secrets.PROD_DATABASE_URL }}
+      - name: "Tests de bout-en-bout sur Chrome"
+        uses: cypress-io/github-action@v2
+        env:
+          CYPRESS_SERVER_URL: ${{ env.DEPLOYMENT_URL }}
+          CYPRESS_BFF_URL: ${{ env.DEPLOYMENT_URL }}/api
+        with:
+          browser: chrome
+          headless: true
+          spec: e2e-tests/tests/**/*
+          record: false
+

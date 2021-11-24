@@ -28,16 +28,43 @@
   - [x] uniformiser le nommage task/todo => Tout renommer en tasks
 
 - ###Story 3 : Ajouter une TODO dans la todo list persisté
-- ###Story 4 : MasterDoggyMind
+  - [x] Ajouter un champ Input sur la page des todos persisté
+  - [x] Au click sur "Ajouter" la tache s'ajoute dans la liste
+  - [ ] Quand je rafraichis la page, la tache est présente
+    - [x] créer le repo
+    - [x] créer le usecase
+    - [x] créer le endpoint
+    - [x] Avoir un postman qui permet de tester
+    - [x] Créer son test e2e Cypress
+    - [x] Faire un appel depuis le composant
+      - [x] Ecrire le test front cypress
+      - [x] Faire passer le test cypress
+    - [x] industrialiser les tests Cypress
+      - [x] Run les tests dans la CI => On les lance sur l'app déployé (RA / Prod)
+  - [x] Le composant devrait s'en foutre des ids et done => Typage différents (DTO / props / DatabaseEntity)
+  - [x] Créer un TaskDTO qui est le contrat d'interface API de Task (done | title) 
+    - S'inspirer de https://khalilstemmler.com/articles/typescript-domain-driven-design/repository-dto-mapper/
+    - https://khalilstemmler.com/articles/categories/domain-driven-design/
+  - [x] Trancher où on met les tests ?
+    - [x] Dans un dossier test
+  - [x] Trouver la place de /lib et /prisma
+
+- ###Story 4 : On finit d'outiller
+  - Intégrer un linter à la CI
+  - mettre des import @
+  - Le site doit être en https pour doggy-skool.fr
+  - Quand j'ai pas de réseau, un message m'indique que je suis sans connexion
+  - [ ] Gérer quand la BDD est pas dispo
+    - [ ] Test d'intégration quand y a une erreur avec la BDD
+
+- ###Story 5 : MasterDoggyMind
+  - S'inspirer de ce [talk](https://www.youtube.com/watch?v=7qqzqse1hgc) pour faire le masterdoggymind (équivalent mastermind)
 
 - ###Story _ : 
-  - Intégrer un linter à la CI
-  - Ajouter des tests API end-to-end
-  - mettre des import @
   - Afficher le test coverage dans le README Github
   - Mettre des animations avec spring (entre les pages, entre 2 états)
-  - Le site doit être en https
   - S'inspirer de ce [talk](https://www.youtube.com/watch?v=7qqzqse1hgc) pour faire un workflow de todo list journalière et exposer une api DDD avec Rest HATEOAS
   - S'inspirer de ce [talk](https://www.youtube.com/watch?v=7qqzqse1hgc) pour faire faire le doggy quiz
-  - S'inspirer de ce [talk](https://www.youtube.com/watch?v=7qqzqse1hgc) pour faire le masterdoggymind (équivalent mastermind)
   - Installer une nouvelle BDD pour chaque nouvelle branche
+  - S'authentifier avec une app officiel
+  - Mettre des observables pour les services
